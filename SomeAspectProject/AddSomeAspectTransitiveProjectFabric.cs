@@ -1,4 +1,5 @@
 ﻿using iFOREX.Utilities.Logging.ExceptionContext.Ignore;
+using Metalama.Framework.Code;
 using Metalama.Framework.Code.Collections;
 using Metalama.Framework.Fabrics;
 
@@ -12,6 +13,7 @@ namespace SomeAspect
                 .With(p =>
                 p
                 .Types
+                .Where(t => t.TypeKind != TypeKind.Delegate)
                 .SelectMany(t => t.Methods)
                 .Where(m => !m.IsAbstract
                             && !MustIgnore(m.Attributes)))

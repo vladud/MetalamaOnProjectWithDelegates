@@ -17,7 +17,7 @@ namespace SomeAspect
                 .SelectMany(t => t.Methods)
                 .Where(m => !m.IsAbstract
                             && !MustIgnore(m.Attributes)))
-                .AddAspect<SomeAspect>();
+                .AddAspectIfEligible<SomeAspect>();
         }
 
         private bool MustIgnore(IAttributeCollection attributes)
